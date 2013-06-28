@@ -1,0 +1,5 @@
+package edu.jhu.cs.oose.fall2012.group1.jyogurt.utils;
+
+public class HttpConn {
+
+}

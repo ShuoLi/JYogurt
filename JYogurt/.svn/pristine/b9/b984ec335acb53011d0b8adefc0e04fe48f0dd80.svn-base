@@ -1,0 +1,310 @@
+package edu.jhu.cs.oose.fall2012.group1.jyogurt;
+
+import java.net.URI;
+import java.util.HashMap;
+
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.util.CryptoBASE64;
+import edu.jhu.cs.oose.fall2012.group1.jyogurt.utils.HttpConn;
+import edu.jhu.cs.oose.fall2012.group1.jyogurt.utils.JYogurtHandler;
+import edu.jhu.cs.oose.fall2012.group1.jyogurt.utils.SettingUtil;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.StrictMode;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+/**
+ * The Login activity for JYogurt Funcs: Login. Links: Registration; Forget
+ * Password (Send address to server)
+ * 
+ * @author Group1
+ * 
+ */
+
+@SuppressLint("HandlerLeak")
+@TargetApi(14)
+public class LoginActivity extends Activity {
+
+	EditText txtUserName;
+	EditText txtPassword;
+	TextView txtReg;
+	Button btnLogin;
+	Button btnCancel;
+	Button btnReset;
+	private String jhed;
+	private String password;
+
+	public final String CATE_PATH = "user";
+	public final String SPEC_PATH = "verify_user.jsp";
+	public final String RESET_PATH = "reset_password.jsp";
+	private ProgressBar circleProgressBar;
+
+	protected static final int STOP = 0x10000;
+	protected static final int NEXT = 0x10001;
+	private int iCount = 0;
+	private String sharedKey = SettingUtil.getKey();
+
+	/**
+	 * Create the framework in the beginning
+	 */
+	public void onCreate(Bundle savedInstanceState) {
+
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_jyogurt);
+		circleProgressBar = (ProgressBar) findViewById(R.id.circleProgressBar);
+		circleProgressBar.setIndeterminate(false);
+
+		txtUserName = (EditText) this.findViewById(R.id.txtUname);
+		txtPassword = (EditText) this.findViewById(R.id.txtPwd);
+		btnLogin = (Button) this.findViewById(R.id.btnLogin);
+		btnCancel = (Button) this.findViewById(R.id.btnCancel);
+		btnReset = (Button) this.findViewById(R.id.btnReset);
+		txtReg = (TextView) this.findViewById(R.id.txtReg);
+		txtUserName.setText("zliu39");// for test use
+		txtPassword.setText("12345");
+
+		final Intent intent = new Intent(this, BuySale.class);
+		final Intent intent2 = new Intent(this, Registration.class);
+		final Bundle bundle = new Bundle();
+
+		txtReg.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+
+				startActivity(intent2);
+			}
+
+		});
+		btnLogin.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+
+				circleProgressBar.setVisibility(View.VISIBLE);
+				circleProgressBar.setProgress(0);
+
+				jhed = txtUserName.getText().toString().trim();
+				password = txtPassword.getText().toString().trim();
+				// Please change the path when doing tests
+				// The configured username is zliu39 and password is 12345
+				
+				
+				String[] pathes = { CATE_PATH, SPEC_PATH };
+				HashMap<String, String> paras = new HashMap<String, String>();
+				try {
+					paras.put("jhed", CryptoBASE64.encrypt(sharedKey, jhed));
+					paras.put("password", CryptoBASE64.encrypt(sharedKey, password));
+				} catch (Exception e) {
+					
+					e.printStackTrace();
+				}
+				Uri path = SettingUtil.append(pathes, paras);
+				String login = login(path, false);
+
+				if (login.equals("success")) {
+					Toast.makeText(LoginActivity.this, "Login Successful",
+							Toast.LENGTH_LONG).show();
+					bundle.putString("user", jhed);
+					intent.putExtras(bundle);
+					startActivity(intent);
+
+				} else if (login.equals("User not found")) {
+					Toast.makeText(LoginActivity.this, "User not found",
+							Toast.LENGTH_LONG).show();
+				} else if (login.equals("invalided password")) {
+					Toast.makeText(LoginActivity.this, "Invalided password",
+							Toast.LENGTH_LONG).show();
+				} else if (login.equals("unkown error")) {
+					Toast.makeText(LoginActivity.this, "Unkown error",
+							Toast.LENGTH_LONG).show();
+				} else if (login.equals("404")) {
+					Toast.makeText(LoginActivity.this, "Server Not Found!",
+							Toast.LENGTH_LONG).show();
+				} else if (login.equals("500")) {
+					Toast.makeText(LoginActivity.this,
+							"Internal Server Error!", Toast.LENGTH_LONG).show();
+				} else if (login.equals("error")) {
+					Toast.makeText(LoginActivity.this,
+							"(Other errors)Login failed, pls try again!",
+							Toast.LENGTH_LONG).show();
+
+				} else {
+					Toast.makeText(LoginActivity.this,
+							"Get the NUll login return value!",
+							Toast.LENGTH_LONG).show();
+				}
+
+			}
+
+		});
+
+		btnCancel.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+
+				txtUserName.setText("");
+				txtPassword.setText("");
+			}
+		});
+
+		btnReset.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				jhed = txtUserName.getText().toString().trim();
+
+				String[] pathes = { CATE_PATH, RESET_PATH };
+				HashMap<String, String> paras = new HashMap<String, String>();
+				paras.put("jhed", jhed);
+				Uri path = SettingUtil.append(pathes, paras);
+				String reset = login(path, true);
+				if (reset.equals("success")) {
+					Toast.makeText(LoginActivity.this,
+							"Reset Email has been sent!", Toast.LENGTH_SHORT)
+							.show();
+				} else if (reset.equals("failure")) {
+					Toast.makeText(LoginActivity.this, "Reset Error!",
+							Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(LoginActivity.this, "Unknow Error!",
+							Toast.LENGTH_SHORT).show();
+				}
+			}
+
+			@SuppressWarnings("unused")
+			Thread mThread = new Thread(new Runnable() {
+
+				public void run() {
+
+					for (int i = 0; i < 20; i++) {
+						try {
+							iCount = (i + 1) * 5;
+							Thread.sleep(1000);
+							if (i == 19) {
+								Message msg = new Message();
+								msg.what = STOP;
+								mHandler.sendMessage(msg);
+								break;
+							} else {
+								Message msg = new Message();
+								msg.what = NEXT;
+								mHandler.sendMessage(msg);
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			});
+
+		});
+	}
+
+	/**
+	 * Show the options menu in the beginning
+	 */
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_jyogurt, menu);
+		return true;
+	}
+
+	/**
+	 * Select a menu item
+	 */
+	public boolean onOptionsItemSelected(MenuItem item) {
+		jhed = txtUserName.getText().toString().trim();
+		Intent intent = new Intent(this, ChangePwdActivity.class);
+		Bundle bundle = new Bundle();
+		switch (item.getItemId()) {
+		case R.id.menuChangePwd:
+			// Single menu item is selected do something
+			Toast.makeText(LoginActivity.this, "Change Password",
+					Toast.LENGTH_SHORT).show();
+			bundle.putString("user", jhed);
+			intent.putExtras(bundle);
+			startActivity(intent);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	/**
+	 * Send user login info to the server (Using Adapter to handle HTTP
+	 * connection, create and parse XML)
+	 * 
+	 * @return Succeed or fail to login
+	 */
+	private String login(Uri path, boolean reset) {
+		String data = "";
+		DefaultHttpClient client = new DefaultHttpClient();
+		HttpGet request = new HttpGet(URI.create(path.toString()));
+		// request.addHeader(ID, postID);
+
+		if (reset == false) {
+
+			data = (String) new HttpConn().fetchDataFromServer(LoginActivity.this,
+					"Login", client, request);
+
+		} else {
+			try {
+				HttpResponse response = client.execute(request);
+				if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+					return "success";
+				} else {
+					return "failure";
+				}
+			}
+
+			catch (Exception e) {
+				Toast.makeText(LoginActivity.this, "Reset Error!",
+						Toast.LENGTH_SHORT).show();
+				e.printStackTrace();
+			}
+
+		}
+
+		return data;
+
+	}
+
+	/**
+	 * Class for process bar handler
+	 */
+	private Handler mHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case STOP:
+				circleProgressBar.setVisibility(View.GONE);
+				Thread.currentThread().interrupt();
+				break;
+			case NEXT:
+				if (!Thread.currentThread().isInterrupted()) {
+					circleProgressBar.setProgress(iCount);
+				}
+				break;
+			}
+		}
+	};
+}

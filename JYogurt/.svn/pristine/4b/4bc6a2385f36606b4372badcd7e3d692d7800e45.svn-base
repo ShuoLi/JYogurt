@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.5.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <type>com.umlet.element.custom.Node</type>
+    <coordinates>
+      <x>171</x>
+      <y>90</y>
+      <w>324</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>center:&lt;&lt;phone&gt;&gt;
+center:Android Client
+center:{OS:Android:4.0}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Node</type>
+    <coordinates>
+      <x>531</x>
+      <y>180</y>
+      <w>162</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>center:&lt;&lt;PC&gt;&gt;
+center:BrowserClient</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Node</type>
+    <coordinates>
+      <x>333</x>
+      <y>495</y>
+      <w>225</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>center:Server
+center:{web server = tomcat}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>288</x>
+      <y>234</y>
+      <w>125</w>
+      <h>278</h>
+    </coordinates>
+    <panel_attributes>lt=-
+HTTP/XML</panel_attributes>
+    <additional_attributes>27;27;27;135;108;135;108;261</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>441</x>
+      <y>234</y>
+      <w>152</w>
+      <h>278</h>
+    </coordinates>
+    <panel_attributes>lt=-
+HTTP</panel_attributes>
+    <additional_attributes>135;27;135;135;27;135;27;261</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Database</type>
+    <coordinates>
+      <x>441</x>
+      <y>684</y>
+      <w>99</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>MySQL DBMS</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>441</x>
+      <y>621</y>
+      <w>82</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+JDBC</panel_attributes>
+    <additional_attributes>45;27;45;63</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SimpleComponent</type>
+    <coordinates>
+      <x>198</x>
+      <y>171</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Android SDK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SimpleComponent</type>
+    <coordinates>
+      <x>333</x>
+      <y>171</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Restful
+Adaptor</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SimpleComponent</type>
+    <coordinates>
+      <x>423</x>
+      <y>585</y>
+      <w>117</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Hibernate</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

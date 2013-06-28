@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.5.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>832</x>
+      <y>1232</y>
+      <w>392</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Administrator
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+
+--
+
+username:String
+password:String
+
+--
+getUsername()
+setUsername()
+getPassword()
+setPassword()
+ </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>416</x>
+      <y>1224</y>
+      <w>256</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+users
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+--
+jhed:String
+password:String
+fname: String
+lname: String
+email: String
+phoneNumber: Integer
+address: Address
+avatarUrl: String
+--
+getJhed()
+setJhed(String jhed)
+getPassword()
+setPassword(String password)
+getFname()
+setFname(String fname)
+getLname()
+setLname(String lname)
+getEmail()
+setEmail(String email)
+getPhoneNumber()
+setPhoneNumber(Integer phoneNumber)
+getAddress()
+setAddress(Address address)
+getAvatarUrl()
+setAvatarUrl(String avatarUrl)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1288</x>
+      <y>1224</y>
+      <w>256</w>
+      <h>328</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Message
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+--
+id: Integer
+usersByToJhed: Users
+usersByFromJhed: Users
+title: String
+description: String
+date: Date
+type: String
+--
+getId()
+setId(Integer id)
+getUsersByToJhed()
+setUsersByToJhed(Users userByToJhed)
+getUsersByFromJhed()
+setUsersByFromJhed(Users userByToJhed)
+getTitle()
+setTitle(String Title)
+getDescription()
+setDescription(String Description)
+getDate()
+setDate(Date date)
+getType()
+setType(String type)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>888</x>
+      <y>512</y>
+      <w>256</w>
+      <h>376</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+BuyingPost
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+--
+postId: Integer
+title: String
+description: String
+users: Users
+email: String
+phoneNumber: Integer
+address: Address
+date: Date
+--
+getPostId()
+setPostId(Integer postId)
+getTitle()
+setTitle(String title)
+getDescription()
+setDescription(String description)
+getUser()
+setUser(Users users)
+getEmail()
+setEmail(String email)
+getPhoneNumber()
+setPhoneNumber(Integer phoneNumber)
+getAddressId()
+setAddressId(Address addressId)
+getDate()
+setDate(Date date)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>160</x>
+      <y>520</y>
+      <w>256</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+ImageHousing
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+--
+imageId: Integer
+HousingPost: HousingPost
+url: String
+date: Date
+fileName: String
+--
+getImageId()
+setImageId(Integer imageId)
+getSellingPost()
+setSellingPost(HousingPost housingPost)
+getUrl()
+setUrl(String url)
+getDate()
+setDate(Date date)
+getFileName()
+setFileName(String fileName)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>1240</y>
+      <w>256</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Adress
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+--
+addressId: Integer
+address: String
+longitude: Double
+latitude: Double
+housingPosts: Set
+sellingPosts: Set
+userses: Set
+BuyingPosts: Set
+--
+getAddressId()
+setAddressId(Integer addressId)
+getAddress()
+setAddress(String address)
+getLongitude()
+setLongitude(Double longitude)
+getLatitude()
+setLatitude(Double latitude)
+getHousingPosts()
+setHousingPosts(Set housingPosts)
+getSellingPosts()
+setSellingPosts(Set sellingPosts)
+getUserses()
+setUserses(Set userses)
+getBuyingPosts()
+setBuyingPosts(Set buyingPosts)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>472</x>
+      <y>520</y>
+      <w>256</w>
+      <h>376</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+HousingPost
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+--
+postId: Integer
+title: String
+description: String
+users: Users
+email: String
+phoneNumber: Integer
+address: Address
+date: Date
+--
+getPostId()
+setPostId(Integer postId)
+getTitle()
+setTitle(String title)
+getDescription()
+setDescription(String description)
+getUser()
+setUser(Users users)
+getEmail()
+setEmail(String email)
+getPhoneNumber()
+setPhoneNumber(Integer phoneNumber)
+getAddressId()
+setAddressId(Address addressId)
+getDate()
+setDate(Date date)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1600</x>
+      <y>520</y>
+      <w>256</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+ImageSelling
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+--
+imageId: Integer
+sellingPost: SellingPost
+url: String
+date: Date
+fileName: String
+--
+getImageId()
+setImageId(Integer imageId)
+getSellingPost()
+setSellingPost(SellingPost sellingPost)
+getUrl()
+setUrl(String url)
+getDate()
+setDate(Date date)
+getFileName()
+setFileName(String fileName)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1632</x>
+      <y>1224</y>
+      <w>256</w>
+      <h>328</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+MessageReplies
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+--
+id: Integer
+usersByToJhed: Users
+usersByFromJhed: Users
+title: String
+description: String
+date: Date
+postType: String
+msgId: Integer
+--
+getId()
+setId(Integer id)
+getUsersByToJhed()
+setUsersByToJhed(Users userByToJhed)
+getUsersByFromJhed()
+setUsersByFromJhed(Users userByToJhed)
+getTitle()
+setTitle(String Title)
+getDescription()
+setDescription(String Description)
+getDate()
+setDate(Date date)
+getType()
+setType(String postType)
+getMsgId()
+setMsgId(Integer msgId)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1288</x>
+      <y>520</y>
+      <w>256</w>
+      <h>376</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+SellingPost
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.model.database.object
+--
+postId: Integer
+title: String
+description: String
+users: Users
+email: String
+phoneNumber: Integer
+address: Address
+date: Date
+--
+getPostId()
+setPostId(Integer postId)
+getTitle()
+setTitle(String title)
+getDescription()
+setDescription(String description)
+getUser()
+setUser(Users users)
+getEmail()
+setEmail(String email)
+getPhoneNumber()
+setPhoneNumber(Integer phoneNumber)
+getAddressId()
+setAddressId(Address addressId)
+getDate()
+setDate(Date date)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>888</x>
+      <y>1016</y>
+      <w>256</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+AppManager
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.control
+--
+
+--
+getAllUsers()
+deletePosts()
+removeUser()
+addUser()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1288</x>
+      <y>1016</y>
+      <w>256</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+ContactManager
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.control
+--
+
+--
+contactByPhone()
+contactByEmail()
+contactByMessage()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>888</x>
+      <y>288</y>
+      <w>256</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+BuyingPostManager
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.control.posts
+--
+
+--
+addPost()
+removePost()
+updatePost()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>472</x>
+      <y>288</y>
+      <w>256</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+HousingPostManager
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.control.posts
+--
+
+--
+addPost()
+removePost()
+updatePost()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>888</x>
+      <y>0</y>
+      <w>256</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+PostManager
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.control.posts
+--
+
+--
+addPost()
+removePost()
+updatePost()
+contactPostOwner()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1288</x>
+      <y>288</y>
+      <w>256</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+SellingPostManager
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.control.posts
+--
+
+--
+addPost()
+removePost()
+updatePost()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>416</x>
+      <y>1016</y>
+      <w>256</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+UserManager
+edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.control.users
+--
+
+--
+getMyPosts()
+editMyPost()
+deleteMyPost()
+editProfile()
+createMyPost()
+retrieveMyPassword()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1520</x>
+      <y>1376</y>
+      <w>128</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;112;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>984</x>
+      <y>424</y>
+      <w>40</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;88;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>576</x>
+      <y>424</y>
+      <w>40</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;96;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>232</x>
+      <y>1408</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+m1=1..*
+m2=0..*</panel_attributes>
+    <additional_attributes>184;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1392</x>
+      <y>424</y>
+      <w>40</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;96;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>576</x>
+      <y>136</y>
+      <w>392</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>376;24;24;152</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>984</x>
+      <y>136</y>
+      <w>40</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;152</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1056</x>
+      <y>136</y>
+      <w>376</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;360;152</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1520</x>
+      <y>680</y>
+      <w>96</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>24;24;80;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>520</x>
+      <y>1152</y>
+      <w>40</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;72;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>520</x>
+      <y>872</y>
+      <w>40</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;24;24;144</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1392</x>
+      <y>1152</y>
+      <w>40</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;72;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>992</x>
+      <y>1152</y>
+      <w>40</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;80;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>568</x>
+      <y>864</y>
+      <w>408</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>392;24;24;152</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>640</x>
+      <y>872</y>
+      <w>728</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>712;24;24;144</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>560</x>
+      <y>872</y>
+      <w>408</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;24;392;144</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>984</x>
+      <y>864</y>
+      <w>40</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;24;24;152</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1048</x>
+      <y>872</y>
+      <w>360</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>344;24;24;144</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>624</x>
+      <y>872</y>
+      <w>752</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;24;736;144</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1040</x>
+      <y>864</y>
+      <w>384</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;24;368;152</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1416</x>
+      <y>872</y>
+      <w>40</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>24;24;24;144</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>328</x>
+      <y>808</y>
+      <w>160</w>
+      <h>544</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..*
+m2=0..*</panel_attributes>
+    <additional_attributes>88;528;24;528;24;24;144;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>648</x>
+      <y>808</y>
+      <w>256</w>
+      <h>552</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..*
+m2=0..*</panel_attributes>
+    <additional_attributes>24;536;136;536;136;24;240;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>648</x>
+      <y>816</y>
+      <w>656</w>
+      <h>672</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..*
+m2=0..*</panel_attributes>
+    <additional_attributes>24;656;584;656;584;24;640;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>648</x>
+      <y>1496</y>
+      <w>656</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..*
+m2=0..*</panel_attributes>
+    <additional_attributes>24;24;640;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>392</x>
+      <y>680</y>
+      <w>96</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>80;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>88</x>
+      <y>784</y>
+      <w>400</w>
+      <h>472</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=0..*
+m2=1..*</panel_attributes>
+    <additional_attributes>24;456;24;280;24;24;384;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>88</x>
+      <y>840</y>
+      <w>816</w>
+      <h>808</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=0..*
+m2=1..*</panel_attributes>
+    <additional_attributes>24;760;24;792;736;792;736;24;800;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>48</x>
+      <y>856</y>
+      <w>1256</w>
+      <h>824</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=0..*
+m2=1..*</panel_attributes>
+    <additional_attributes>24;744;24;808;1216;808;1216;24;1240;24</additional_attributes>
+  </element>
+</diagram>

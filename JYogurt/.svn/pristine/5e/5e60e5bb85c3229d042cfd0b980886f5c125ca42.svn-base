@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="180dp"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        
+        <ImageButton
+            android:id="@+id/imgButtonBuying"
+            android:layout_width="fill_parent"
+            android:layout_height="89dp"
+            android:src="@drawable/buying" />
+
+        <ImageButton
+            android:id="@+id/imgButtonHousing"
+            style="android:imageButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="89dp"
+            android:background="@drawable/housing" />
+        
+        <ImageButton
+            android:id="@+id/imgHousingMap"
+            style="@style/LightThemeSelector"
+            android:layout_width="match_parent"
+            android:layout_height="89dp"
+            android:src="@drawable/googlemap8" />
+
+        <ImageButton
+            android:id="@+id/imgShake"
+            style="@style/LightThemeSelector"
+            android:layout_width="match_parent"
+            android:layout_height="89dp"
+            android:src="@drawable/shake" />
+
+        <ImageButton
+            android:id="@+id/imgBuyingMap"
+            android:layout_width="match_parent"
+            android:layout_height="89dp"
+            android:src="@drawable/googlemap5" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

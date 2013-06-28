@@ -1,0 +1,263 @@
+package edu.jhu.cs.oose.fall2012.group1.jyogurt.utils;
+
+
+import java.io.StringWriter;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+
+import org.xmlpull.v1.XmlSerializer;
+
+import android.util.Base64;
+import android.util.Xml;
+
+/**
+ * The class of XML writer for different purposes.
+ * @author Zaoxing Liu (Alan) Hang Ou
+ *
+ */
+public class XMLWriter {
+	
+	/**
+	 * XML writer for Post
+	 * @return xml string
+	 */
+	public String writeXmlPost(Post post, HashMap<String, byte[]> images) {
+		XmlSerializer serializer = Xml.newSerializer();
+		StringWriter writer = new StringWriter();
+		try {
+			serializer.setOutput(writer);
+			serializer.startDocument("UTF-8", true);
+			serializer.startTag("", "BuyingPost");
+
+			serializer.startTag("", "id");
+			serializer.text(post.getPostId());
+			serializer.endTag("", "id");
+			serializer.startTag("", "title");
+			serializer.text(post.getTitle());
+			serializer.endTag("", "title");
+			serializer.startTag("", "author");
+			serializer.text(post.getAuthor());
+			serializer.endTag("", "author");
+			serializer.startTag("", "authorjhed");
+			serializer.text(post.getJhed());
+			serializer.endTag("", "authorjhed");
+			serializer.startTag("", "address");
+			serializer.text(post.getAddress());
+			serializer.endTag("", "address");
+			serializer.startTag("", "latitude");
+			serializer.text(post.getLatitude());
+			serializer.endTag("", "latitude");
+			serializer.startTag("", "longitude");
+			serializer.text(post.getLongitude());
+			serializer.endTag("", "longitude");
+			serializer.startTag("", "date");
+			serializer.text(getNowDate());
+			serializer.endTag("", "date");
+			serializer.startTag("", "description");
+			serializer.text(post.getDescription());
+			serializer.endTag("", "description");
+			serializer.startTag("", "email");
+			serializer.text(post.getEmail());
+			serializer.endTag("", "email");
+			serializer.startTag("", "phonenumber");
+			serializer.text(post.getPhoneNumber());
+			serializer.endTag("", "phonenumber");
+			
+			if(images != null && images.size() > 0){
+				serializer.startTag("", "images");
+				for(String image : images.keySet()){
+					serializer.startTag("", "image");
+					serializer.text(new String(Base64.encode(images.get(image), Base64.NO_WRAP)));
+					serializer.endTag("", "image");
+				}
+				serializer.endTag("", "images");
+			}
+			
+			
+			serializer.endTag("", "BuyingPost");
+			serializer.endDocument();
+			return writer.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * XML writer for User
+	 * @return XML string
+	 */
+	public String writeXmlUser(User user) {
+		XmlSerializer serializer = Xml.newSerializer();
+		StringWriter writer = new StringWriter();
+		try {
+			serializer.setOutput(writer);
+			serializer.startDocument("UTF-8", true);
+			serializer.startTag("", "User");
+
+			serializer.startTag("", "jhed");
+			serializer.text(user.getJhed());
+			serializer.endTag("", "jhed");
+			serializer.startTag("", "password");
+			serializer.text(user.getPassword());
+			serializer.endTag("", "password");
+			serializer.startTag("", "hopkinsid");
+			serializer.text(user.getHopkinsId());
+			serializer.endTag("", "hopkinsid");
+			serializer.startTag("", "email");
+			serializer.text(user.getEmail());
+			serializer.endTag("", "email");
+			serializer.startTag("", "fname");
+			serializer.text(user.getFname());
+			serializer.endTag("", "fname");
+			serializer.startTag("", "lname");
+			serializer.text(user.getLname());
+			serializer.endTag("", "lname");
+			serializer.startTag("", "phone_number");
+			serializer.text(user.getPhoneNumber());
+			serializer.endTag("", "phone_number");
+			serializer.startTag("", "address");
+			serializer.text(user.getAddress());
+			serializer.endTag("", "address");
+			serializer.startTag("", "longitude");
+			serializer.text("");
+			serializer.endTag("", "longitude");
+			serializer.startTag("", "latitude");
+			serializer.text("");
+			serializer.endTag("", "latitude");
+
+			serializer.endTag("", "User");
+			serializer.endDocument();
+			return writer.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * XML writer for getting nearby posts
+	 * @return
+	 */
+	public String writeXmlNearby(String lat, String lon, String radius) {
+		XmlSerializer serializer = Xml.newSerializer();
+		StringWriter writer = new StringWriter();
+		try {
+			serializer.setOutput(writer);
+			serializer.startDocument("UTF-8", true);
+			serializer.startTag("", "location");
+
+			serializer.startTag("", "latitude");
+			serializer.text(lat);
+			serializer.endTag("", "latitude");
+			serializer.startTag("", "longitude");
+			serializer.text(lon);
+			serializer.endTag("", "longitude");
+			serializer.startTag("", "radius");
+			serializer.text(radius);
+			serializer.endTag("", "radius");
+
+			serializer.endTag("", "location");
+			serializer.endDocument();
+			return writer.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	
+	public String writeXmlCreatePost(Post post , String category, HashMap<String, byte[]> images){
+		XmlSerializer serializer = Xml.newSerializer();
+		StringWriter writer = new StringWriter();
+		try {
+			serializer.setOutput(writer);
+			serializer.startDocument("UTF-8", true);
+			serializer.startTag("", category.trim());//BuyingPost; HousingPost;
+
+			serializer.startTag("", "title");
+			serializer.text(post.getTitle());
+			serializer.endTag("", "title");
+			serializer.startTag("", "authorjhed");
+			serializer.text(post.getJhed());
+			serializer.endTag("", "authorjhed");
+			serializer.startTag("", "address");
+			serializer.text(post.getAddress());
+			serializer.endTag("", "address");
+			serializer.startTag("", "date");
+			serializer.text(getNowDate());
+			serializer.endTag("", "date");
+			serializer.startTag("", "description");
+			serializer.text(post.getDescription());
+			serializer.endTag("", "description");
+			
+			if(images != null && images.size() > 0){
+				serializer.startTag("", "images");
+				for(String image : images.keySet()){
+					serializer.startTag("", "image");
+					serializer.text(new String(Base64.encode(images.get(image), Base64.NO_WRAP)));
+					serializer.endTag("", "image");
+				}
+				serializer.endTag("", "images");
+			}
+			
+			
+			serializer.endTag("", category.trim());
+			serializer.endDocument();
+			return writer.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+	}
+	
+	public String writeXmlMessage(Message message) {
+		XmlSerializer serializer = Xml.newSerializer();
+		StringWriter writer = new StringWriter();
+		try {
+			serializer.setOutput(writer);
+			serializer.startDocument("UTF-8", true);
+			serializer.startTag("", "Message");
+			
+			serializer.startTag("", "title");
+			serializer.text(message.getTitle());
+			serializer.endTag("", "title");
+			
+			serializer.startTag("", "from");
+			serializer.text(message.getUsersByFromJhed());
+			serializer.endTag("", "from");
+			
+			serializer.startTag("", "to");
+			serializer.text(message.getUsersByToJhed());
+			serializer.endTag("", "to");
+			
+			serializer.startTag("", "date");
+			serializer.text(this.getNowDate());
+			serializer.endTag("", "date");
+			
+			serializer.startTag("", "type");
+			serializer.text("");
+			serializer.endTag("", "type");
+			
+			serializer.startTag("", "description");
+			serializer.text(message.getDescription());
+			serializer.endTag("", "description");
+			
+			
+			
+			serializer.endTag("", "Message");
+			serializer.endDocument();
+			return writer.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public String getNowDate() {
+		   Date currentTime = new Date();
+		   SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		   String dateString = formatter.format(currentTime);
+		   //ParsePosition pos = new ParsePosition(8);
+		   //Date currentTime_2 = formatter.parse(dateString, pos);
+		  // return currentTime_2;
+		   return dateString;
+		}
+}

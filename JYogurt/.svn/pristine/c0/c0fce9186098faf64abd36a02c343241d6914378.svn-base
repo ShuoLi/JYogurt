@@ -1,0 +1,31 @@
+package edu.jhu.cs.oose.fall2012.group1.jyogurt;
+
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+/**
+ * Housing selection page
+ * @author Group 1
+ *
+ */
+public class Housing extends Activity {
+
+	/**
+	 * Show the display components in the beginning (Select from GOOGLE MAP and
+	 * VIEW ALL)
+	 */
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_housing);
+	}
+
+	/**
+	 * Show the options menu in the beginning
+	 */
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_housing, menu);
+		return true;
+	}
+
+}

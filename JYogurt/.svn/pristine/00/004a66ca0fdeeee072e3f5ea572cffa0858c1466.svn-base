@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.jhu.cs.oose.fall2012.group1.jyogurt"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-sdk
+        android:maxSdkVersion="15"
+        android:minSdkVersion="11"
+        android:targetSdkVersion="11"
+        tools:ignore="OldTargetApi" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light.DarkActionBar"> 
+        <uses-library android:name="com.google.android.maps" />
+
+        <activity
+			android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.LoginActivity"
+            android:label="@string/title_activity_jyogurt" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.BuySale"
+            android:label="@string/title_activity_buy_sale" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.Housing"
+            android:label="@string/title_activity_housing" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.ViewAll"
+            android:label="@string/title_activity_view_all" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.MapViewActivity"
+            android:label="@string/title_activity_map_view" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.Setting"
+            android:label="@string/title_activity_setting" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.PostDetail"
+            android:label="@string/title_activity_post_detail" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.Registration"
+            android:label="@string/title_activity_registration" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.PostManagement"
+            android:label="@string/title_activity_post_management" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.PostEdit"
+            android:label="@string/title_activity_post_edit" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.ShakingActivity"
+            android:label="@string/title_activity_shaking" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.NewPost"
+            android:label="@string/title_activity_new_post" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.jhu.cs.oose.fall2012.group1.jyogurt.NewPost" />
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.NewMessage"
+            android:label="@string/title_activity_new_message" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.MessageView"
+            android:label="@string/title_activity_message_view" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.MessageManagement"
+            android:label="@string/title_activity_message_management" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.ChangePwdActivity"
+            android:label="@string/title_activity_change_pwd" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.GalleryActivity"
+            android:label="@string/title_activity_gallery" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.TabActivity"
+            android:label="@string/title_activity_tab" >
+        </activity>
+        <activity
+            android:name="edu.jhu.cs.oose.fall2012.group1.jyogurt.SpalashActivity"
+            android:label="@string/title_activity_spalash"
+            android:theme="@style/FullscreenTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

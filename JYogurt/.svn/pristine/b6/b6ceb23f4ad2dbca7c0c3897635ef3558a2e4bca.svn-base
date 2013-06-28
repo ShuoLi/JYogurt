@@ -1,0 +1,34 @@
+package edu.jhu.cs.oose.fall2012.group1.jyogurt;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+/**
+ * The class for showing a Spalash image before the login screen is shown.
+ * @author Alan
+ *
+ */
+public class SpalashActivity extends Activity {
+   
+	public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_spalash);
+        Handler x = new Handler();
+        x.postDelayed(new splashhandler(), 2000);
+        
+    }
+	/**
+	 * The handler for handling the startup image and then start the login activity
+	 * @author Alan
+	 *
+	 */
+    class splashhandler implements Runnable{
+
+        public void run() {
+            startActivity(new Intent(getApplication(),LoginActivity.class));
+            SpalashActivity.this.finish();
+        }
+        
+    }
+}

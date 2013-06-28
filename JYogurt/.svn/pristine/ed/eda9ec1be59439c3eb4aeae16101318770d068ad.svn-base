@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imgButtonBuying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgButtonHousing"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/imgButtonHousing"
+        android:layout_toLeftOf="@+id/txtShake"
+        android:background="@drawable/buying1" />
+
+    <ImageButton
+        android:id="@+id/imgButtonHousing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imgHousingMap"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/housing"
+        android:src="@drawable/housing" />
+
+    <ImageButton
+        android:id="@+id/imgHousingMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/googlemap8"
+        android:src="@drawable/googlemap8" />
+
+    <ImageButton
+        android:id="@+id/imgBuyingMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imgButtonHousing"
+        android:background="@drawable/googlemap5"
+        android:src="@drawable/googlemap5" />
+
+    <TextView
+        android:id="@+id/txtBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imgButtonBuying"
+        android:layout_marginBottom="26dp"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/linearLayout1"
+        android:text="Buy and Sale"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/txtHousing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtBuy"
+        android:layout_alignBottom="@+id/txtBuy"
+        android:layout_alignLeft="@+id/imgButtonHousing"
+        android:text="Housing"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/txtShake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_toLeftOf="@+id/txtHousing"
+        android:text="Give it a shot"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/imgShake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtShake"
+        android:layout_toRightOf="@+id/imgBuyingMap"
+        android:src="@drawable/shake" />
+
+</RelativeLayout>

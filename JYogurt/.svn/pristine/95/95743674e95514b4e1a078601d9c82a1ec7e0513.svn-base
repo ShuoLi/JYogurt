@@ -1,0 +1,173 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ADD8E6" >
+
+    <EditText
+        android:id="@+id/editHopkins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:inputType="text"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editHopkins"
+        android:inputType="textEmailAddress"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editEmail"
+        android:layout_alignBottom="@+id/editEmail"
+        android:layout_toRightOf="@+id/editEmail"
+        android:text="Hopkins Email" />
+
+    <EditText
+        android:id="@+id/editAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPhone"
+        android:layout_toLeftOf="@+id/txtPhone"
+        android:ems="10"
+        android:inputType="textMultiLine"/>
+
+    <TextView
+        android:id="@+id/txtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editPhone"
+        android:layout_alignBottom="@+id/editPhone"
+        android:layout_alignLeft="@+id/txtEmail"
+        android:text="Phone Number" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:text="Submit" />
+
+    <EditText
+        android:id="@+id/editPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editJhed"
+        android:layout_toLeftOf="@+id/txtEmail"
+        android:ems="10"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/editPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editEmail"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtPhone"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="18dp"
+        android:text="Cancel" />
+
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editAddress"
+        android:layout_alignBottom="@+id/editAddress"
+        android:layout_alignRight="@+id/txtEmail"
+        android:text="Address" />
+
+    <TextView
+        android:id="@+id/txtHopkins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btnCancel"
+        android:layout_centerVertical="true"
+        android:text="Hopkins ID" />
+
+    <TextView
+        android:id="@+id/txtPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editPwd"
+        android:layout_alignBottom="@+id/editPwd"
+        android:layout_alignRight="@+id/txtHopkins"
+        android:text="Password" />
+
+    <EditText
+        android:id="@+id/editLname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editFname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editLname"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editJhed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editHopkins"
+        android:layout_alignParentLeft="true"
+        android:inputType="text"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/txtFname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editFname"
+        android:layout_alignBottom="@+id/editFname"
+        android:layout_alignLeft="@+id/txtLname"
+        android:text="First Name" />
+
+    <TextView
+        android:id="@+id/txtLname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editLname"
+        android:layout_alignBottom="@+id/editLname"
+        android:layout_alignRight="@+id/txtEmail"
+        android:text="Last Name" />
+
+    <TextView
+        android:id="@+id/txtJhed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editJhed"
+        android:layout_alignBottom="@+id/editJhed"
+        android:layout_alignLeft="@+id/txtAddress"
+        android:text="Jhed" />
+
+</RelativeLayout>

@@ -1,0 +1,172 @@
+package edu.jhu.cs.oose.fall2012.group1.jyogurt;
+
+import edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.util.CryptoBASE64;
+import edu.jhu.cs.oose.fall2012.group1.jyogurt.utils.SettingUtil;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.os.Bundle;
+
+/**
+ * Show The Selection page for Buy and Sale (View All or Google map view)
+ * 
+ * @author Zaoxing Liu (Alan)
+ * 
+ */
+public class BuySale extends Activity{
+
+	private ImageButton buying;
+	private ImageButton buyingMap;
+	private ImageButton housing;
+	private ImageButton housingMap;
+	private TextView txtBuying;
+	private TextView txtHousing;
+	private TextView txtShake;
+	private ImageButton imgShake;
+	private String jhed;
+
+	// private ShowDialog dialog;
+
+	/**
+	 * Show the display components in the beginning (Select from GOOGLE MAP and
+	 * VIEW ALL)
+	 */
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_buy_sale);
+
+		Intent intentThis = this.getIntent();
+		Bundle bund = intentThis.getExtras();
+		jhed = bund.getString("user");
+
+		buying = (ImageButton) this.findViewById(R.id.imgButtonBuying);
+		housing = (ImageButton) this.findViewById(R.id.imgButtonHousing);
+		buyingMap = (ImageButton) this.findViewById(R.id.imgBuyingMap);
+		housingMap = (ImageButton) this.findViewById(R.id.imgHousingMap);
+		imgShake = (ImageButton) this.findViewById(R.id.imgShake);
+
+		final Intent intent = new Intent(this, ViewAll.class);
+		final Intent intent2 = new Intent(this, MapViewActivity.class);
+		final Intent intent3 = new Intent(this, ShakingActivity.class);
+		final Bundle bundle = new Bundle();
+
+		buying.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+				String category = "BuyingPostList";
+				bundle.putString("user", jhed);
+				bundle.putString("category", category);
+				intent.putExtras(bundle);
+				startActivity(intent);
+
+			}
+
+		});
+
+		housing.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+				String category = "HousingPostList";
+				bundle.putString("user", jhed);
+				bundle.putString("category", category);
+				intent.putExtras(bundle);
+				startActivity(intent);
+
+			}
+
+		});
+		buyingMap.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+				String category = "BuyingPostList";
+				bundle.putString("user", jhed);
+				bundle.putString("category", category);
+				intent2.putExtras(bundle);
+				startActivity(intent2);
+			}
+
+		});
+
+		housingMap.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+				String category = "HousingPostList";
+				bundle.putString("user", jhed);
+				bundle.putString("category", category);
+				intent2.putExtras(bundle);
+				startActivity(intent2);
+			}
+
+		});
+
+		imgShake.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+
+				startActivity(intent3);
+			}
+
+		});
+
+	}
+
+	/**
+	 * Create the options menu
+	 */
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_buy_sale, menu);
+		return true;
+	}
+	/**
+	 * Select a menu item
+	 */
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent;
+		Bundle bundle = new Bundle();
+		switch (item.getItemId()) {			
+		case R.id.view:
+			// Single menu item is selected do something
+			Toast.makeText(BuySale.this, "View your current posts",
+					Toast.LENGTH_SHORT).show();
+			intent = new Intent(this, PostManagement.class);
+			String category = "BuyingPostList";
+			try {
+				bundle.putString("user", CryptoBASE64.encrypt(SettingUtil.getKey(), jhed));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			bundle.putString("category", category);
+			intent.putExtras(bundle);
+			startActivity(intent);
+
+			return true;
+
+		case R.id.menu_settings:
+			Toast.makeText(BuySale.this, "Logged out!", Toast.LENGTH_SHORT)
+					.show();
+			BuySale.this.finish();
+			intent = new Intent(this, LoginActivity.class);
+			startActivity(intent);
+
+			return true;
+		case R.id.add:
+			Toast.makeText(BuySale.this, "Publish a new post...", Toast.LENGTH_SHORT)
+					.show();
+			intent = new Intent(this, NewPost.class);
+			bundle.putString("user", jhed);
+			intent.putExtras(bundle);
+			startActivity(intent);
+
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+}

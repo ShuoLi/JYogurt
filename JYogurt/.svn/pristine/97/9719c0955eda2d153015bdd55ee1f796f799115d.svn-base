@@ -1,0 +1,74 @@
+package edu.jhu.cs.oose.fall2012.group1.jyogurt.utils;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+/**
+ * The XML Handler is used for parsing the login XML and get the return value
+ * 
+ * 
+ * @author Zaoxing Liu (Alan)
+ * 
+ */
+
+public class XMLHandlerLogin extends JYogurtHandler {
+
+	@SuppressWarnings("unused")
+	private boolean in_return = false;
+	private boolean in_exsit = false;
+
+	private boolean in_mainTitle = false;
+	private String item;
+	private StringBuffer buf = new StringBuffer();
+
+	public Object getParsedData() {
+		return item;
+	}
+
+	public void startDocument() throws SAXException {
+		item = new String();
+	}
+
+	public void endDocument() throws SAXException {
+
+	}
+
+	public void startElement(String namespaceURI, String localName,
+			String qName, Attributes atts) throws SAXException {
+		if (localName.equals("UserVerify")||localName.equals("UpdatePassword")) {
+			this.in_exsit = true;
+
+		} else if (localName.equals("return")) {
+			if (this.in_exsit) {
+				this.in_return = true;
+			} else {
+				this.in_mainTitle = true;
+			}
+		}
+	}
+
+	public void endElement(String namespaceURI, String localName, String qName)
+			throws SAXException {
+		if (localName.equals("UserVerify")||localName.equals("UpdatePassword")) {
+			this.in_exsit = false;
+
+		}
+
+		else if (localName.equals("return")) {
+			if (this.in_exsit) {
+				item = buf.toString().trim();
+				buf.setLength(0);
+				this.in_return = false;
+			}
+
+		}
+	}
+
+	public void characters(char ch[], int start, int length) {
+		if (this.in_exsit || this.in_mainTitle) {
+			buf.append(ch, start, length);
+		}
+	}
+
+}

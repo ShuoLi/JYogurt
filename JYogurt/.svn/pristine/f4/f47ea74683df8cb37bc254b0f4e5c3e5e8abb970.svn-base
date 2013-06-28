@@ -1,0 +1,143 @@
+package edu.jhu.cs.oose.fall2012.group1.jyogurt.utils;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+import edu.jhu.cs.oose.fall2012.group1.jyogurt.dev.util.CryptoBASE64;
+
+/**
+ * The XML handler is used for parsing the post list XML architecture
+ * 
+ * @author Zaoxing Liu (Alan)
+ * 
+ */
+
+public class XMLHandlerList extends JYogurtHandler {
+
+	private boolean in_post = false;
+	@SuppressWarnings("unused")
+	private boolean in_title = false;
+	@SuppressWarnings("unused")
+	private boolean in_date = false;
+	@SuppressWarnings("unused")
+	private boolean in_author = false;
+
+	private boolean in_mainTitle = false;
+	private List<Post> li;
+	private Post post;
+	private StringBuffer buf = new StringBuffer();
+	
+
+	public Object getParsedData() {
+		return li;
+	}
+
+	public void startDocument() throws SAXException {
+		li = new ArrayList<Post>();
+	}
+
+	public void endDocument() throws SAXException {
+	}
+
+	public void startElement(String namespaceURI, String localName,
+			String qName, Attributes atts) throws SAXException {
+		if (localName.equals("BuyingPost") || localName.equals("HousingPost")) {
+			this.in_post = true;
+			post = new Post();
+			String encriptedID = new String(atts.getValue("id"));
+			String decriptedID = "";
+			try {
+				decriptedID = CryptoBASE64.decrypt(sharedkey, encriptedID);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			post.setPostId(decriptedID);
+
+		} else if (localName.equals("title")) {
+			if (this.in_post) {
+				this.in_title = true;
+			} else {
+				this.in_mainTitle = true;
+			}
+		} else if (localName.equals("author")) {
+			if (this.in_post) {
+				this.in_author = true;
+			}
+		} else if (localName.equals("date")) {
+			if (this.in_post) {
+				this.in_date = true;
+			}
+		}
+
+	}
+
+	public void endElement(String namespaceURI, String localName, String qName)
+			throws SAXException {
+		if (localName.equals("BuyingPost") || localName.equals("HousingPost")) {
+			this.in_post = false;
+			li.add(post);
+			// items.setCategory(buf.toString().trim());
+			// buf.setLength(0);
+
+		} else if (localName.equals("title")) {
+			if (this.in_post) {
+				String cipertext = buf.toString().trim();
+				String decryptMsg = "";
+				try {
+					decryptMsg = CryptoBASE64.decrypt(sharedkey, cipertext);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				post.setTitle(decryptMsg);
+				buf.setLength(0);
+				this.in_title = false;
+			}
+
+		} else if (localName.equals("author")) {
+			if (this.in_post) {
+				String cipertext = buf.toString().trim();
+				String decryptMsg = "";
+				try {
+					decryptMsg = CryptoBASE64.decrypt(sharedkey, cipertext);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				post.setAuthor(decryptMsg);
+				buf.setLength(0);
+				this.in_author = false;
+			}
+		} else if (localName.equals("date")) {
+			if (this.in_post) {
+				String cipertext = buf.toString().trim();
+				String decryptMsg = "";
+				try {
+					decryptMsg = CryptoBASE64.decrypt(sharedkey, cipertext);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				post.setDate(decryptMsg);
+				buf.setLength(0);
+				this.in_date = false;
+			}
+		}
+	}
+
+	/**
+	 * The override function for append strings
+	 */
+	@Override
+	public void characters(char ch[], int start, int length) {
+		if (this.in_post || this.in_mainTitle) {
+
+			buf.append(ch, start, length);
+		}
+	}
+
+}

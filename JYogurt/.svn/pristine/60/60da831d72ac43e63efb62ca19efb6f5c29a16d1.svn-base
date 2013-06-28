@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JYogurt</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Log out</string>
+    <string name="title_activity_jyogurt">JYogurt</string>
+    <string name="title_activity_hello_good">HelloGood</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_buy_sale">BuySale</string>
+    <string name="title_activity_housing">Housing</string>
+    <string name="title_activity_view_all">ViewAll</string>
+    <string name="title_activity_map_view">MapView</string>
+    <string name="title_activity_setting">Setting</string>
+    <string name="title_activity_post_detail">PostDetail</string>
+    <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_post_management">PostManagement</string>
+    <string name="title_activity_post_edit">PostEdit</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="remember_me">remember me</string>
+    <string name="title_activity_shaking">JYogurt</string>
+    <string name="title_activity_new_post">Newpost</string>
+
+    <string-array name="post_type">
+        <item>buying post</item>
+        <item>selling post</item>
+        <item>housing post</item>
+    </string-array>
+
+    <string name="title_activity_new_message">NewMessage</string>
+    <string name="title_activity_message_view">MessageView</string>
+    <string name="title_activity_message_management">MessageManagement</string>
+    <string name="title_activity_change_pwd">ChangePwdActivity</string>
+    <string name="title_activity_gallery">GalleryActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="title_activity_spalash">JYogurt</string>
+    <string name="search_hint">type in goods name</string>
+    <string name="app_label"></string>
+    <string name="title_activity_post_search">PostSearch</string>
+
+</resources>

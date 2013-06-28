@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChangePwdActivity" >
+
+    <EditText
+        android:id="@+id/editNewPwd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editNewPwd"
+        android:layout_below="@+id/editNewPwd"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/txtNewPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editNewPwd"
+        android:layout_alignBottom="@+id/editNewPwd"
+        android:layout_alignParentLeft="true"
+        android:text="New Password" />
+
+    <EditText
+        android:id="@+id/editCurrentPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editNewPwd"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="27dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/txtNewPwd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editNewPwd2"
+        android:layout_alignBottom="@+id/editNewPwd2"
+        android:layout_alignParentLeft="true"
+        android:text="Confirm Password" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnClear"
+        android:layout_alignBottom="@+id/btnClear"
+        android:layout_alignRight="@+id/editNewPwd2"
+        android:layout_marginRight="32dp"
+        android:text="Submit" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
+        android:layout_toRightOf="@+id/txtPwd"
+        android:text="Clear" />
+
+    <EditText
+        android:id="@+id/editNewPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editCurrentPwd"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:inputType="textPassword" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/txtPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editCurrentPwd"
+        android:layout_alignBottom="@+id/editCurrentPwd"
+        android:layout_alignParentLeft="true"
+        android:text="Password" />
+
+</RelativeLayout>

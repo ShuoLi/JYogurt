@@ -1,0 +1,80 @@
+package edu.jhu.cs.oose.fall2012.group1.jyogurt;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.util.EntityUtils;
+
+import edu.jhu.cs.oose.fall2012.group1.jyogurt.utils.SettingUtil;
+import android.net.Uri;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class PostSearch extends Activity {
+
+	private EditText tagEditView;
+	private Button searchButton;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_post_search);
+		
+		tagEditView = (EditText) this.findViewById(R.id.editTextTag);
+		searchButton = (Button) this.findViewById(R.id.searchButton);
+		
+		searchButton.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View arg0) {
+				String good = tagEditView.getText().toString();
+				String[] temp = {"search.jsp"};
+				HashMap<String,String> paras = new HashMap<String, String>();
+				paras.put("tag", good);
+				Uri uri = SettingUtil.append(temp,paras);
+				
+				HttpClient httpclient = new DefaultHttpClient();
+			    httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+			    HttpResponse response;
+			    HttpPost httppost = new HttpPost(uri.toString());
+			    try {
+					response = httpclient.execute(httppost);
+					HttpEntity resEntity = response.getEntity();
+					//System.out.println(response.getStatusLine());
+				    if (resEntity != null) {
+				      System.out.println(EntityUtils.toString(resEntity));
+				    }
+				    if (resEntity != null) {
+				      resEntity.consumeContent();
+				    }
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_post_search, menu);
+		return true;
+	}
+
+}
